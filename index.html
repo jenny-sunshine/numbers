@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lan="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <title>NUMBERS</title>
+
+    <style>
+        body {
+            background-color: rgba(100, 200, 50, 0.5);
+            font-size: 200%;
+        }
+
+        button {
+            font-size: 100%;
+        }
+
+    </style>
+
+</head>
+
+<body style>
+    <h1 style="text-align: center;" id="multiply">
+        5x6=
+    </h1>
+    <div style="text-align: center;">
+        <button id="b1">
+            42
+        </button>
+        <button id="b2">
+            35
+        </button>
+        <button id="b3">
+            30
+        </button>
+        <button id="b4">
+            32
+        </button>
+    </div>
+    <p style="text-align: center;" id="star">
+    </p>
+
+    <script>
+        function random() {
+            return Math.floor(Math.random() * 10) + 1;
+        }
+        function example() {
+            var a = random()
+            var b = random()
+            var correct = b * a;
+            // var incorrect = b * a + 3;
+            // var incorrect1 = b * a - 5;
+            // var incorrect2 = b * a + 1;
+            var h1 = document.getElementById('multiply');
+            h1.textContent = a + 'x' + b + '=';
+
+            var b1 = document.getElementById('b1');
+            b1.onclick = function () {
+                var num = Number(b1.textContent);
+                checkAnswer(num)
+            };
+
+            var b2 = document.getElementById('b2');
+            b2.onclick = function () {
+                var num = Number(b2.textContent);
+                checkAnswer(num)
+            };
+
+            var b3 = document.getElementById('b3');
+            b3.onclick = function () {
+                var num = Number(b3.textContent);
+                checkAnswer(num)
+            };
+
+            var b4 = document.getElementById('b4');
+            b4.onclick = function () {
+                var num = Number(b4.textContent);
+                checkAnswer(num)
+            };
+
+            var star = document.getElementById('star');
+
+            function shuffleArray(a) {
+                for (var i = a.length - 1; i > 0; i--) {
+                    var j = Math.floor(Math.random() * (i + 1));
+                    var temp = a[i];
+                    a[i] = a[j];
+                    a[j] = temp;
+                }
+            }
+
+            var bad = [
+                b * a + 1,
+                b * a - 1,
+                b * (a + 1),
+                b * (a - 1),
+                a * (b - 1),
+                a * (b + 1),
+                a * b - 2,
+                a * b + 2,
+            ];
+            shuffleArray(bad)
+
+            var array = [correct, bad[0], bad[1], bad[2]];
+
+            shuffleArray(array)
+
+            b2.textContent = array[0];
+            b1.textContent = array[1];
+            b3.textContent = array[2];
+            b4.textContent = array[3];
+
+            function checkAnswer(num) {
+                if (correct == num) {
+                    star.textContent = star.textContent + '⭐';
+                } else {
+                    star.textContent = ''
+                }
+                example();
+            }
+
+        }
+
+        example()
+    </script>
+
+</body>
+
+</html>
