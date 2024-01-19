@@ -2,7 +2,8 @@
 <html lan="en-US">
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
+    <meta name="viweport" content="width=device-width, initial-scale=1">
     <title>NUMBERS</title>
 
     <style>
@@ -15,11 +16,24 @@
             font-size: 100%;
         }
 
+        .mobile {
+            font-size: 500%;
+        }
+
+        .mobile button {
+            font-size: 150%;
+        }
+
     </style>
 
 </head>
 
 <body style>
+    <script>
+        if (navigator.userAgent.includes('Mobile')) {
+            document.body.classList.add('mobile');
+        }
+    </script>
     <h1 style="text-align: center;" id="multiply">
         5x6=
     </h1>
